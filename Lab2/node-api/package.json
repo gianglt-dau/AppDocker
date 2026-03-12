@@ -1,0 +1,13 @@
+{
+  "name": "node-api",
+  "version": "1.0.0",
+  "description": "Lab2 - NodeJS API with Mock Data",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
+  }
+}

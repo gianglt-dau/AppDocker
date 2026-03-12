@@ -1,0 +1,44 @@
+version: '3.8'
+services:
+  mysql:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: appdb
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: mysql
+    depends_on:
+      - mysql
+
+  node-api:
+    build: ./node-api
+    environment:
+      DB_HOST: mysql
+    depends_on:
+      - mysql
+
+  python-api:
+    build: ./python-api
+    environment:
+      DATABASE_URL: mysql+pymysql://root:root@mysql/appdb
+    depends_on:
+      - mysql
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - node-api
+      - python-api
+
+volumes:
+  mysql_data:

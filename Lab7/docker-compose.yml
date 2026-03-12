@@ -1,0 +1,57 @@
+version: '3.8'
+services:
+  # ==================== DATABASE ====================
+  mysql:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: appdb
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  # ==================== phpMyAdmin ====================
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: mysql
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  # ==================== NodeJS API (Tasks) ====================
+  node-api:
+    build: ./node-api
+    environment:
+      DB_HOST: mysql
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  # ==================== Python API (Users + Dashboard) ====================
+  python-api:
+    build: ./python-api
+    environment:
+      DATABASE_URL: mysql+pymysql://root:root@mysql/appdb
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  # ==================== Frontend (React + Nginx) ====================
+  frontend:
+    build: ./frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - node-api
+      - python-api
+
+volumes:
+  mysql_data:
