@@ -1,0 +1,105 @@
+# ==============================================
+# Tracta Project .gitignore
+# ==============================================
+
+# ============ .NET / C# ============
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vs/
+*.vspscc
+*.vssscc
+[Bb]uild/
+[Rr]elease/
+[Dd]ebug/
+[Ll]og/
+[Ll]ogs/
+
+# NuGet
+packages/
+*.nupkg
+*.snupkg
+project.lock.json
+project.fragment.lock.json
+artifacts/
+.nuget/
+
+# ASP.NET Core
+appsettings.Production.json
+appsettings.Staging.json
+appsettings.Development.json
+
+# Test results
+TestResults/
+coverage/
+*.coverage
+*.coveragexml
+
+# ============ Node.js / React ============
+node_modules/
+dist/
+build/
+.npm
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.pnp.*
+
+# Vite
+.vite/
+
+# ============ Environment & Secrets ============
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env
+!.env.example
+
+# ============ Docker ============
+# Keep docker-compose files tracked, ignore overrides
+docker-compose.override.yml
+
+# ============ Database ============
+*.db
+*.sqlite
+*.sqlite3
+pgdata/
+
+# ============ IDE / Editor ============
+.idea/
+.vscode/settings.json
+!.vscode/settings.json.example
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Keep these .vscode files
+!.vscode/extensions.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+# ============ Logs ============
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ============ Temporary / Generated ============
+tmp/
+temp/
+*.tmp
+*.temp
+
+# ============ Certificates ============
+*.pfx
+*.p12
+*.key
+!*.key.example
