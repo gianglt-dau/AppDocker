@@ -31,6 +31,21 @@ Lab6/
 
 ## Hướng dẫn chạy
 
+### 0. (Tùy chọn) Phát triển Python API local
+
+**Tạo và kích hoạt môi trường ảo (nếu chưa có):**
+```powershell
+# Tại thư mục gốc Lab6
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+```
+
+```bash
+cd python-api
+pip install -r requirements.txt
+uvicorn main:app --reload --port 8000
+```
+
 ### 1. Khởi chạy toàn bộ hệ thống
 ```bash
 docker compose up --build -d

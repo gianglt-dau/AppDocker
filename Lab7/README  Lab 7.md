@@ -368,21 +368,24 @@ npm install
 Tạo môi trường ảo để cách ly thư viện, tránh xung đột:
 
 ```powershell
-# Tại thư mục gốc Lab7
-python -m venv .venv
+# Di chuyển vào thư mục python-api
+cd Lab7/python-api
+
+# Tạo virtual environment
+python -m venv venv
 
 # Kích hoạt virtual environment
 # --- Windows PowerShell ---
-.venv\Scripts\Activate.ps1
+.\venv\Scripts\Activate.ps1
 
 # --- Windows CMD ---
-# .venv\Scripts\activate.bat
+# venv\Scripts\activate.bat
 
 # --- Linux / macOS ---
-# source .venv/bin/activate
+# source venv/bin/activate
 ```
 
-Sau khi kích hoạt, đầu dòng terminal sẽ hiện `(.venv)` — nghĩa là đang dùng môi trường ảo.
+Sau khi kích hoạt, đầu dòng terminal sẽ hiện `(venv)` — nghĩa là đang dùng môi trường ảo.
 
 ### 3.2. Tạo `Lab7/python-api/requirements.txt`
 

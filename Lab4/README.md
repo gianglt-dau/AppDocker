@@ -24,6 +24,14 @@ node app.js
 ```
 
 ### 3. Chạy Python API
+
+**Tạo và kích hoạt môi trường ảo (nếu chưa có):**
+```powershell
+# Tại thư mục gốc Lab4
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+```
+
 ```bash
 cd python-api
 pip install -r requirements.txt

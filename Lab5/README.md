@@ -36,6 +36,23 @@ Lab5/
 - `nginx.conf` đóng vai trò reverse proxy, chuyển tiếp request đến đúng backend service
 - Backend đọc DB host từ biến môi trường (`DB_HOST`, `DATABASE_URL`)
 
+
+
+## Phát triển local (Python API)
+
+**Tạo và kích hoạt môi trường ảo (nếu chưa có):**
+```powershell
+# Tại thư mục gốc Lab5
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+```
+
+```bash
+cd python-api
+pip install -r requirements.txt
+uvicorn main:app --reload --port 8000
+```
+
 ## Build Docker images
 ```bash
 docker build -t node-api ./node-api

@@ -1,19 +1,23 @@
+SET NAMES 'utf8mb4';
+CREATE DATABASE IF NOT EXISTS appdb CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE appdb;
+
 -- ==================== BẢNG USERS ====================
 CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
+    name VARCHAR(255) NOT NULL CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
     email VARCHAR(255) NOT NULL,
     role VARCHAR(50) DEFAULT 'member'
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ==================== BẢNG TASKS ====================
 CREATE TABLE IF NOT EXISTS tasks (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(255) NOT NULL,
+    title VARCHAR(255) NOT NULL CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
     status VARCHAR(50) DEFAULT 'pending',
     assigned_to INT,
     FOREIGN KEY (assigned_to) REFERENCES users(id) ON DELETE SET NULL
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ==================== DỮ LIỆU MẪU ====================
 
